@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-To run this, you may visit the live site(http://recipefinder.surge.sh/) or fork and clone the repo.
+To run this, you may visit the [live site](http://recipefinder.surge.sh/) or fork and clone the repo.
 
 ### Installing
 
