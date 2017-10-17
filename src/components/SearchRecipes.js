@@ -14,15 +14,9 @@ class SearchRecipes extends Component {
     }
   }
 
-  deleteCookie() {
-    console.log('delete cookie');
-    delete_cookie('favoriteRecipesList')
-  }
-
   search() {
     let { ingredients, dish } = this.state
-    // const url = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${ ingredients }&q=${ dish }`
-    const url = `http://www.recipepuppy.com/api/?i=${ ingredients }&q=${ dish }`
+    const url = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${ ingredients }&q=${ dish }`
 
     fetch(url, {
       method: 'GET'

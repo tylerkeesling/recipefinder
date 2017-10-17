@@ -12,20 +12,13 @@ function recipes(state = [], action) {
 }
 
 function favoriteRecipes(state = [], action) {
-  state = read_cookie('favoriteRecipesList');
-  let favoriteRecipesList = []
   switch (action.type) {
     case FAVORITE_RECIPE:
-      favoriteRecipesList = [...state, action.recipe]
-      let newCookie = bake_cookie('favoriteRecipesList', favoriteRecipesList)
-      console.log(newCookie);
-      return favoriteRecipesList
+      return [...state, action.recipe]
     case DELETE_RECIPE:
-      favoriteRecipesList = state.filter(recipe => {
+      return state.filter(recipe => {
         return recipe.title !== action.recipe.title
       })
-      bake_cookie('favoriteRecipesList', favoriteRecipesList)
-      return favoriteRecipesList
     default:
       return state
   }
