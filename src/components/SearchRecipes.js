@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { setRecipes } from '../actions'
+import { delete_cookie } from 'sfcookies'
 
 class SearchRecipes extends Component {
   constructor() {
@@ -13,9 +14,15 @@ class SearchRecipes extends Component {
     }
   }
 
+  deleteCookie() {
+    console.log('delete cookie');
+    delete_cookie('favoriteRecipesList')
+  }
+
   search() {
     let { ingredients, dish } = this.state
-    const url = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${ ingredients }&q=${ dish }`
+    // const url = `https://cors-anywhere.herokuapp.com/http://www.recipepuppy.com/api/?i=${ ingredients }&q=${ dish }`
+    const url = `http://www.recipepuppy.com/api/?i=${ ingredients }&q=${ dish }`
 
     fetch(url, {
       method: 'GET'
@@ -50,6 +57,7 @@ class SearchRecipes extends Component {
         </FormGroup>
         {' '}
         <Button onClick={ () => this.search() }>Submit</Button>
+        <Button onClick={ () => this.deleteCookie() }>Delete Cookie</Button>
       </Form>
     )
   }

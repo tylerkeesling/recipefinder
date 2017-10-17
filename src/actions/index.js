@@ -1,5 +1,6 @@
 export const SET_RECIPES = 'SET_RECIPES'
 export const FAVORITE_RECIPE = 'FAVORITE_RECIPE'
+export const DELETE_RECIPE = 'DELETE_RECIPE'
 
 export function setRecipes(items) {
   return {
@@ -13,4 +14,11 @@ export function favoriteRecipe(recipe) {
     type: 'FAVORITE_RECIPE',
     recipe
   }
+}
+
+export function deleteRecipe(recipe) {
+    return {
+      type: 'DELETE_RECIPE',
+      recipe
+    }
 }

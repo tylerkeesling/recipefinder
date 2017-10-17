@@ -1,21 +1,25 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { favoriteRecipe } from '../actions'
+import { favoriteRecipe, deleteRecipe } from '../actions'
 
 class RecipeItem extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       favorited: false
     }
   }
-  favorite(recipe) {
-    this.props.favoriteRecipe(recipe)
-    this.setState({ favorited: true })
-  }
 
-  f
+  toggleFavorite(recipe) {
+    if (this.state.favorited) {
+      this.props.deleteRecipe(recipe)
+      this.setState({ favorited: false })
+    } else {
+      this.props.favoriteRecipe(recipe)
+      this.setState({ favorited: true })
+    }
+  }
 
   render() {
     let { recipe } = this.props
@@ -24,11 +28,16 @@ class RecipeItem extends Component {
         {
           this.props.favoriteButton ?
             this.state.favorited ?
-              <div className='star'>&#9733;</div>
+              <div
+                className='star'
+                onClick={ () => this.toggleFavorite(recipe) }
+              >
+                &#9733;
+              </div>
             :
               <div
                 className='star'
-                onClick={ ()=> this.favorite(recipe) }
+                onClick={ () => this.toggleFavorite(recipe) }
               >
                 &#9734;
               </div>
@@ -51,4 +60,8 @@ class RecipeItem extends Component {
   }
 }
 
-export default connect(null, { favoriteRecipe })(RecipeItem)
+function mapStateToProps(state) {
+  return state
+}
+
+export default connect(mapStateToProps, { favoriteRecipe, deleteRecipe })(RecipeItem)
