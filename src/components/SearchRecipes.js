@@ -51,7 +51,6 @@ class SearchRecipes extends Component {
         </FormGroup>
         {' '}
         <Button onClick={ () => this.search() }>Submit</Button>
-        <Button onClick={ () => this.deleteCookie() }>Delete Cookie</Button>
       </Form>
     )
   }
